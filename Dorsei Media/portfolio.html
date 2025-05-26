@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - Dorsei Media Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/dorsei medias.png" alt="Dorsei Media Logo">
+            </div>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="workshops.html">Workshops</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section" style="background-color: #f4f4f4;">
+            <div class="container">
+                <h1>Our Portfolio</h1>
+                <p>See Examples of Our Work</p>
+            </div>
+        </section>
+
+        <section id="projects" class="content-section">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="portfolio-grid-full">
+
+                    <article class="portfolio-item-full">
+                        <img src="images/prappram.jpg" alt="Accra Mall CCTV Expansion">
+                        <div class="portfolio-item-content">
+                            <h3>Game TV DTT - First Digital Platform </h3>
+                            <p><strong>Client:</strong> Game TV </p>
+                            <p><strong>Location:</strong> Dzorwulu</p>
+                            <p><strong>Services Provided:</strong> DTT - First Digital Platform </p>
+                            
+                        </div>
+                    </article>
+
+            
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Dorsei Media. All Rights Reserved.</p>
+                <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/233249673623" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp fa-2x" style="color: white;"></i>
+    </a>
+
+    <script src="script.js"></script>
+    <script>
+        
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-navigation');
+
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            
+            
+            if (mainNav.classList.contains('active')) {
+                menuToggle.innerHTML = '✕';
+                menuToggle.setAttribute('aria-label', 'Close Menu');
+            } else {
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle Menu');
+            }
+        });
+
+       
+        const navLinks = document.querySelectorAll('.main-navigation a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.setAttribute('aria-label', 'Toggle Menu');
+                }
+            });
+        });
+
+        
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !mainNav.contains(e.target) && 
+                !menuToggle.contains(e.target) && 
+                mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle Menu');
+            }
+        });
+
+        
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 500) {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle Menu');
+            }
+        });
+    </script>
+</body>
+</html>

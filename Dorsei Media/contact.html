@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Dorsei Media</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+             <div class="logo">
+                <img src="images/dorsei medias.png" alt="Dorsei Media Logo">
+            </div>
+            <nav class="main-navigation">
+                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="workshops.html">Workshops</a></li>
+                    <li><a href="contact.html" class="active">Contact Us</a></li> </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section" style="background-color: #f4f4f4;">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>We'd Love to Hear From You</p>
+            </div>
+        </section>
+
+        <section id="contact-details-form" class="content-section">
+            <div class="container contact-grid"> <div class="contact-info">
+                    <h2>Get in Touch Directly</h2>
+                    <p>Feel free to reach out via phone or email during business hours.</p>
+                    <div class="info-item">
+                        <strong>Phone:</strong>
+                        <p><a href="tel:+233249673623">+233 24 967 3623</a></p>
+                        <p><a href="tel:+233504276290">+233 50 427 6290</a></p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Email:</strong>
+                        <p><a href="mailto:oseimedia1@gmail.com">oseimedia1@gmail.com</a></p>
+                        <p><a href="mailto:oseip2015@gmail.com">oseip2015@gmail.com</a></p>
+                    </div>
+                     
+                    <div class="info-item">
+                        <strong>Business Hours:</strong>
+                        <p> Monday - Friday: 8:00 AM - 5:00 PM GMT</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                    <form id="main-contact-form" action="process-form.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In:</label>
+                            <select id="service" name="service">
+                                <option value="">-- Select a Service --</option>
+                                <option value="App Developing">App Developing</option>
+                                <option value="Network/Intercom">Network & Intercom Systems</option>
+                                <option value="PCR/MCR Setup">PCR and MCR Setup</option>
+                                <option value="Hardware">Computer Hardware Accessories</option>
+                                <option value="CCTV">CCTV Installation</option>
+                                <option value="LED Screens">LED Wall Screens Installation</option>
+                                <option value="Workshops">Workshops</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message:</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="cta-button">Send Message</button>
+                        </div>
+                    </form>
+                     <script>
+                        
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const serviceParam = urlParams.get('service');
+                        if (serviceParam) {
+                            const serviceSelect = document.getElementById('service');
+                           
+                            const normalizedParam = serviceParam.replace('+', ' ');
+                            for (let i = 0; i < serviceSelect.options.length; i++) {
+                                if (serviceSelect.options[i].value === normalizedParam) {
+                                    serviceSelect.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                        }
+                     </script>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Dorsei Media. All Rights Reserved.</p>
+                <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/233249673623" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp fa-2x" style="color: white;"></i>
+    </a>
+
+    <script src="script.js"></script>
+
+    <script>
+        
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-navigation');
+
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            
+            
+            if (mainNav.classList.contains('active')) {
+                menuToggle.innerHTML = '✕';
+                menuToggle.setAttribute('aria-label', 'Close Menu');
+            } else {
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle Menu');
+            }
+        });
+
+       
+        const navLinks = document.querySelectorAll('.main-navigation a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.setAttribute('aria-label', 'Toggle Menu');
+                }
+            });
+        });
+
+        
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !mainNav.contains(e.target) && 
+                !menuToggle.contains(e.target) && 
+                mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle Menu');
+            }
+        });
+
+       
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 500) {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle Menu');
+            }
+        });
+    </script>
+</body>
+</html>

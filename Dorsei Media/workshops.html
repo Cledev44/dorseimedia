@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops - Dorsei Media</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/dorsei medias.png" alt="Dorsei Media Logo">
+            </div>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="workshops.html" class="active">Workshops</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section" style="background-color: #f4f4f4;">
+            <div class="container">
+                <h1>Workshops & Training</h1>
+                <p>Enhance Your Skills with Dorsei Media</p>
+            </div>
+        </section>
+
+        <section id="upcoming-workshops" class="content-section">
+            <div class="container">
+                <h2>Upcoming Workshops</h2>
+                <p>No upcoming workshops are scheduled at this moment. Please check back later or <a href="contact.html?interest=Workshop+Inquiry">contact us</a> for custom training sessions.</p>
+            </div>
+        </section>
+
+        <section id="past-workshops" class="content-section" style="background-color: #ffffff;">
+            <div class="container">
+                <h2>Past Workshops</h2>
+                <ul>
+                    <li><strong>Introduction to Broadcast Technology</strong> - February 25, 2025<br>
+                        <em>Cape Coast, CAFDIL TV</em><br>
+                        Covered studio setup, signal routing, and live streaming basics. Participants set up a mini studio and streamed a 10-minute segment on Dorsei Media’s platform.</li>
+                    
+                </ul>
+                <p>If you’re interested in any topic from our past workshops or want a repeat session, please <a href="contact.html?interest=Past+Workshop+Inquiry">contact us</a>.</p>
+            </div>
+        </section>
+
+        <section id="custom-training" class="content-section">
+            <div class="container">
+                <h2>Need Custom Training?</h2>
+                <p>We organize tailored workshops for your team on topics such as network infrastructure, mobile development, CCTV systems, and digital signage. Reach out to discuss your training requirements.</p>
+                <a href="contact.html?interest=Custom+Training" class="cta-button secondary">Inquire About Custom Training</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+
+            </div>
+
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Dorsei Media. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <a href="https://wa.me/233249673623" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp fa-2x" style="color: white;"></i>
+    </a>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+<script>
+        
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-navigation');
+
+    menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        
+        
+        if (mainNav.classList.contains('active')) {
+            menuToggle.innerHTML = '✕';
+            menuToggle.setAttribute('aria-label', 'Close Menu');
+        } else {
+            menuToggle.innerHTML = '☰';
+            menuToggle.setAttribute('aria-label', 'Toggle Menu');
+        }
+    });
+
+   
+    const navLinks = document.querySelectorAll('.main-navigation a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle Menu');
+            }
+        });
+    });
+
+    
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !mainNav.contains(e.target) && 
+            !menuToggle.contains(e.target) && 
+            mainNav.classList.contains('active')) {
+            mainNav.classList.remove('active');
+            menuToggle.innerHTML = '☰';
+            menuToggle.setAttribute('aria-label', 'Toggle Menu');
+        }
+    });
+
+    
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 500) {
+            mainNav.classList.remove('active');
+            menuToggle.innerHTML = '☰';
+            menuToggle.setAttribute('aria-label', 'Toggle Menu');
+        }
+    });
+</script>
+</body>
+</html>
